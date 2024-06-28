@@ -21,16 +21,24 @@ export default function TabCatogery({ jobs }) {
           </div>
           <TabPanel>
             <div className="mt-6 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap:6">
-            {jobs.map(job => (
+            {jobs.filter(j=> j.category === 'Web Development').map(job => (
               <JobCard job={job} key={job._id} />
             ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+          <div className="mt-6 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap:6">
+            {jobs.filter(j=> j.category === 'Graphic Design').map(job => (
+              <JobCard job={job} key={job._id} />
+            ))}
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>any</h2>
+          <div className="mt-6 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap:6">
+            {jobs.filter(j=> j.category === 'Digital Marketing').map(job => (
+              <JobCard job={job} key={job._id} />
+            ))}
+            </div>
           </TabPanel>
         
       </div>

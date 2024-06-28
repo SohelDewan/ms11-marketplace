@@ -10,7 +10,7 @@
     },
     {
       "job_title": "Graphic Design",
-      "category": "Design",
+      "category": "Graphic Design",
       "deadline": "2024-05-12",
       "description": "Design a captivating logo for a brand",
       "min_price": 50,
@@ -19,7 +19,7 @@
     },
     {
       "job_title": "Digital Marketing",
-      "category": "Marketing",
+      "category": "Digital Marketing",
       "deadline": "2024-05-10",
       "description": "Create a social media marketing strategy",
       "min_price": 150,

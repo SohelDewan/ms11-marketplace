@@ -2,7 +2,7 @@
 
 # npm i react-router-dom firebase axios react-tabs react-hot-toast swiper date-fns
 
-# soloSphere
+# soloSphere(marketplace for freelancers)
 
 - [Live Link(Firebase)](https://solosphere.web.app/)
 

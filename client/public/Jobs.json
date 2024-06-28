@@ -1,0 +1,30 @@
+[
+    {
+      "job_title": "Website Development",
+      "category": "Web Development",
+      "deadline": "2024-05-10",
+      "description": "Create a responsive website for a small business",
+      "min_price": 100,
+      "max_price": 300,
+      "buyer_email": "buyer3@example.com"
+    },
+    {
+      "job_title": "Graphic Design",
+      "category": "Design",
+      "deadline": "2024-05-12",
+      "description": "Design a captivating logo for a brand",
+      "min_price": 50,
+      "max_price": 200,
+      "buyer_email": "buyer1@example.com"
+    },
+    {
+      "job_title": "Digital Marketing",
+      "category": "Marketing",
+      "deadline": "2024-05-10",
+      "description": "Create a social media marketing strategy",
+      "min_price": 150,
+      "max_price": 500,
+      "buyer_email": "buyer2@example.com"
+    }
+  ]
+  

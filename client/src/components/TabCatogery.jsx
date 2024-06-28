@@ -2,11 +2,11 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobCard from "./JobCard";
 
-export default function TabCatogery() {
+export default function TabCatogery({ jobs }) {
 
   return (
     <Tabs>
-      <div className="container p-6 mx-auto">
+      <div className="container p-6 mx-auto bg-green-200">
         <h2 className="text-2xl md:text-5xl text-center font-bold p-6">Brows jobs by categories</h2>
         <p className='max-w-2xl mx-auto my-6 text-center text-gray-500 '>
           Three categories available for the time being. They are Web
@@ -20,13 +20,17 @@ export default function TabCatogery() {
           </TabList>
           </div>
           <TabPanel>
-            <div>Any content 1</div>
+            <div className="mt-6 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap:6">
+            {jobs.map(job => (
+              <JobCard job={job} key={job._id} />
+            ))}
+            </div>
           </TabPanel>
           <TabPanel>
             <h2>Any content 2</h2>
           </TabPanel>
           <TabPanel>
-            <h2><JobCard /></h2>
+            <h2>any</h2>
           </TabPanel>
         
       </div>

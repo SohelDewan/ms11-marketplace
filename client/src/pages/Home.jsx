@@ -1,14 +1,13 @@
-import { useLoaderData } from "react-router-dom";
-import Carousel from "../components/Carousel";
-import TabCatogery from "../components/TabCatogery";
+import Carousel from '../components/Carousel'
+import TabCategories from '../components/TabCatogery'
 
-export default function Home() {
-  const jobs = useLoaderData()
-  console.log(jobs);
+const Home = () => {
   return (
     <div>
       <Carousel />
-      <TabCatogery jobs={jobs}/>
+      <TabCategories />
     </div>
   )
 }
+
+export default Home

@@ -1,12 +1,24 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobCard from "./JobCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
+export default function TabCategories() {
 
-export default function TabCatogery({ jobs }) {
+  const [jobs, setJobs] = useState([]);
+  // another way to fetch data from api 
+  useEffect(()=>{  //use effect doesn't directly access async functions
+    const getData = async () =>{// so additional function is created
+      const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs`)
+      // import.meta.env.(`url`)...is .env.local file url variable
+      setJobs(data)// to get data without props axios is used and jobs data is set
+    }
+    getData()// additional function is called
+  } ,[])
 
   return (
     <Tabs>
-      <div className="container p-6 mx-auto bg-green-200">
+      <div className=" p-6 mx-auto bg-green-200">
         <h2 className="text-2xl md:text-5xl text-center font-bold p-6">Brows jobs by categories</h2>
         <p className='max-w-2xl mx-auto my-6 text-center text-gray-500 '>
           Three categories available for the time being. They are Web

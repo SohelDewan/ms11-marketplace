@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 require('dotenv').config()
 const port = process.env.PORT || 5000;
@@ -15,7 +16,6 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.i2cqtwl.mongodb.net/?appName=Cluster0`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -34,6 +34,20 @@ async function run() {
     app.get('/jobs', async (req, res) => {
         const result = await jobsCollection.find().toArray();
         res.send(result);
+    })
+    // Get a single job from the db using id
+    app.get('/job/:id', async (req, res)=>{
+      const id = req.params.id
+      const query = { _id: new ObjectId(id) }
+      const result = await jobsCollection.findOne(query);
+      res.send(result);
+    })
+    // Save a bid data in mongodb
+    app.post('/bid', async (req, res)=>{
+      const bidData = req.body;
+      // console.log(bidData);
+      const result = await bidsCollection.insertOne(bidData);
+      res.send(result);
     })
     // Connect the client to the server	(optional starting in v4.7)
     // await client.connect();

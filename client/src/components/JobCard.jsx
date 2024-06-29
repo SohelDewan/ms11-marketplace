@@ -3,7 +3,6 @@
 import { Link } from 'react-router-dom'
 
 const   JobCard = ({ job }) => {
-
   const {
     _id,
     job_title,
@@ -32,10 +31,10 @@ const   JobCard = ({ job }) => {
         <h1 className='mt-2 text-lg font-semibold text-gray-800 '>
           {job_title}
         </h1>
-
+      {/* title for hover and show description, .substring for  */}
         <p title={description} className='mt-2 text-sm text-gray-600 '>
           {description.substring(0, 70)}...
-        </p>
+        </p> 
         <p className='mt-2 text-sm font-bold text-gray-600 '>
           Range: ${min_price} - ${max_price}
         </p>

@@ -69,6 +69,7 @@ async function run() {
       const result = await jobsCollection.deleteOne(query);
       res.send(result);
     })
+    
     // Update a job data in mongodb
     app.put('/job/:id', async (req, res)=>{
       const id = req.params.id;

@@ -32,7 +32,7 @@ const JobDetails = () => {
     const comment = form.comment.value
     const deadline = startDate
     const email = user?.email
-    // const buyer_email = buyer_email
+    const buyer_email = buyer_email
     const status = 'Pending'
 
     const bidData = {

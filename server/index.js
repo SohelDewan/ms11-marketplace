@@ -45,8 +45,42 @@ async function run() {
     // Save a bid data in mongodb
     app.post('/bid', async (req, res)=>{
       const bidData = req.body;
-      // console.log(bidData);
       const result = await bidsCollection.insertOne(bidData);
+      res.send(result);
+    })
+    // Save a job data in mongodb
+    app.post('/job', async (req, res)=>{
+      const jobData = req.body;
+      const result = await jobsCollection.insertOne(jobData);
+      res.send(result);
+    })
+    // Get all jobs posted by specific user
+    app.get('/jobs/:email', async (req, res)=>{
+      const email = req.params.email;
+      const query = { 'buyer.email': email } 
+      //This is how to access nested objects in db, if db buyer email == email then my posted job
+      const result = await jobsCollection.find(query).toArray();
+      res.send(result);
+    })
+    // Delete jobs posted by specific user from db
+    app.delete('/job/:id', async (req, res)=>{
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) } // if db buyer email == email then my posted job
+      const result = await jobsCollection.deleteOne(query);
+      res.send(result);
+    })
+    // Update a job data in mongodb
+    app.put('/job/:id', async (req, res)=>{
+      const id = req.params.id;
+      const jobData = req.body;
+      const query = {_id: new ObjectId(id) }
+      const options = {upsert: true}
+      const updateDoc = {
+        $set:{
+          ... jobData,
+        } ,
+      }
+      const result = await jobsCollection.updateOne(query, updateDoc, options);
       res.send(result);
     })
     // Connect the client to the server	(optional starting in v4.7)

@@ -27,7 +27,7 @@ export default function TabCategories() {
         <div className="flex items-center justify-center mt-4">
           <TabList>
             <Tab>Web Development</Tab>
-            <Tab>Graphic Design</Tab>
+            <Tab>Graphics Design</Tab>
             <Tab>Digital Marketing</Tab>
           </TabList>
           </div>
@@ -40,7 +40,7 @@ export default function TabCategories() {
           </TabPanel>
           <TabPanel>
           <div className="mt-6 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap:6">
-            {jobs.filter(j=> j.category === 'Graphic Design').map(job => (
+            {jobs.filter(j=> j.category === 'Graphics Design').map(job => (
               <JobCard job={job} key={job._id} />
             ))}
             </div>

@@ -28,6 +28,7 @@ const AddJob = () => {
       min_price,
       max_price,
       description,
+      email,
       buyer: {
         email,
         name: user?.displayName,

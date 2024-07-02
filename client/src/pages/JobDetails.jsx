@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -17,9 +17,10 @@ const JobDetails = () => {
     max_price,
     category,
     deadline,
+    email, 
     buyer,
   } = job || {}
-
+// console.log(job)
   const handleFormSubmission = async e => {
     e.preventDefault()
     if (user?.email === buyer?.email)
@@ -32,7 +33,7 @@ const JobDetails = () => {
     const comment = form.comment.value
     const deadline = startDate
     const email = user?.email
-    const buyer_email = buyer_email
+    // const buyer_email = buyer_email
     const status = 'Pending'
 
     const bidData = {
@@ -159,12 +160,13 @@ const JobDetails = () => {
           </div>
 
           <div className='flex justify-end mt-6'>
+            <Link to='/'>
             <button
               type='submit'
               className='px-8 py-3 mt-3 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'
             >
               Place Bid
-            </button>
+            </button></Link>
           </div>
         </form>
       </section>

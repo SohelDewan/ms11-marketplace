@@ -1,11 +1,12 @@
 import { useContext, useState } from 'react'
-import { Link, useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 const JobDetails = () => {
+  const navigate = useNavigate()
   const [startDate, setStartDate] = useState(new Date())
   const { user } = useContext(AuthContext)
   const job = useLoaderData()
@@ -15,7 +16,7 @@ const JobDetails = () => {
     description,
     min_price,
     max_price,
-    category,
+    category, 
     deadline,
     email, 
     buyer,
@@ -48,7 +49,9 @@ const JobDetails = () => {
       status,
       buyer,
     }
-    console.log(bidData)
+    // console.log(data)
+    toast.success('Bid placed successfully')
+    navigate('/my-bids')
     try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/bid`,

@@ -150,12 +150,12 @@ const MyBids = () => {
                              "bg-red-500"
                           }
                           `}></span>
-                            <h2 className="text-sm font-normal ">{bids.status}</h2>
+                            <h2 className="text-sm font-normal ">{bid.status}</h2>
                         </div>
                       </td>
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <button
-                        disabled={bids.status !== 'In Progress'}
+                        disabled={bid.status !== 'In Progress'}
                         // onClick={()=>handleStatus(bid._id)}
                           title="Mark Complete"
                           className="text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none disabled:cursor-not-allowed"

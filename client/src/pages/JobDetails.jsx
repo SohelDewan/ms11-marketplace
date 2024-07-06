@@ -24,8 +24,10 @@ const JobDetails = () => {
 // console.log(job)
   const handleFormSubmission = async e => {
     e.preventDefault()
-    if (user?.email === buyer?.email)
+    if (user?.email === buyer?.email){
+
       return toast.error('Action not permitted!')
+    }
     const form = e.target
     const jobId = _id
     const price = parseFloat(form.price.value)
@@ -34,7 +36,7 @@ const JobDetails = () => {
     const comment = form.comment.value
     const deadline = startDate
     const email = user?.email
-    // const buyer_email = buyer_email
+    const buyer_email = buyer_email
     const status = 'Pending'
 
     const bidData = {
@@ -126,9 +128,8 @@ const JobDetails = () => {
             </div>
 
             <div>
-              <label className='text-gray-700 ' htmlFor='emailAddress'>
-                Email Address
-              </label>
+               <label htmlFor=""> Email Address</label>
+     
               <input
                 id='emailAddress'
                 type='email'

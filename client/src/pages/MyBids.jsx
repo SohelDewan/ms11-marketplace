@@ -11,6 +11,7 @@ const MyBids = () => {
   }, [user]);
 
   const getData = async () => {
+    console.log(`${import.meta.env.VITE_API_URL}/my-bids/${user?.email}`)
     const { data } = await axios(
       `${import.meta.env.VITE_API_URL}/my-bids/${user?.email}`
     )
@@ -18,7 +19,7 @@ const MyBids = () => {
   }
   console.log(bids);
   return (
-    <section className="container px-4 mx-auto pt-12">
+    <section className="container px-4 mx-auto pt-12 min-h-[calc(100vh-306px)]">
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800 ">My Bids</h2>
 
@@ -27,7 +28,7 @@ const MyBids = () => {
         </span>
       </div>
 
-      <div className="flex flex-col mt-6">
+      <div className="flex flex-col mt-6 ">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden border border-gray-200  md:rounded-lg">

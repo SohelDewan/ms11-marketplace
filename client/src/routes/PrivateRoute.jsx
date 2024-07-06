@@ -15,4 +15,5 @@ export default function PrivateRoute({ children }) {
     if(user) return children
   return <Navigate to="/login" state={location.pathname} replace={true} />
   // if (!user) return to login page and redirect to location where it was
+  //  Here <Navigate /> is a component because there is no function or button to click on
 }

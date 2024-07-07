@@ -1,7 +1,7 @@
 # React + Vite
 
 # npm i react-router-dom firebase axios react-tabs react-hot-toast swiper date-fns
-
+# npm i jsonwebtoken cookie-parser
 # soloSphere(marketplace for freelancers)
 
 - [Live Link(Firebase)](https://solosphere.web.app/)

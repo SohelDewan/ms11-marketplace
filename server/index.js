@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 require('dotenv').config()
@@ -14,7 +15,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(express.json());
-
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.i2cqtwl.mongodb.net/?appName=Cluster0`;
 
@@ -31,6 +31,16 @@ async function run() {
   try {
     const jobsCollection = client.db('innovator').collection('jobs');
     const bidsCollection = client.db('innovator').collection('bids');
+    // jwt(json web token) generates
+    app.post('/jwt', async (req, res) => {
+      const user = req.body
+      console.log("Dynamic", user)
+      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: '40d',
+      })
+      res.json({ token })
+    })
+    // Get all the jobs from mongodb
     app.get('/jobs', async (req, res) => {
         const result = await jobsCollection.find().toArray();
         res.send(result);

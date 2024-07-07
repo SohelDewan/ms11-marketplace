@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+
 const BidRequests = () => {
     const { user } = useContext(AuthContext);
   const [bids, setBids] = useState([]);
@@ -15,7 +16,6 @@ const BidRequests = () => {
   }, [user]);
 
   const getData = async () => {
-    // console.log(`${import.meta.env.VITE_API_URL}/my-bids/${user?.email}`)
     const { data } = await axios(
       `${import.meta.env.VITE_API_URL}/bid-requests/${user?.email}`
     )
@@ -25,12 +25,14 @@ const BidRequests = () => {
 const handleStatus = async (id, prevStatus, status) => {
 if(prevStatus === status) {
     console.log('Status is already same')
-    return toast.warn('Status already in use')
+    return toast.error('Status already in use')
+}else{
+    toast.success('Status updated successfully')
 }
 console.log(id, prevStatus, status)
 const { data } = await axios.patch(`${import.meta.env.VITE_API_URL}/bid/${id}`, {status}) // route is bid/id and only one update for patch
 console.log(data)
-getData() // here getData() should be called to change status in progress
+getData() //UI REFRESH/update called to change status in progress
 }
 //   const { user } = useAuth()
 //   const axiosSecure = useAxiosSecure()

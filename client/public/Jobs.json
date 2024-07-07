@@ -1,30 +1,92 @@
 [
-    {
-      "job_title": "Website Development with React",
-      "category": "Web Development",
-      "deadline": "2024-05-10",
-      "description": "Create a responsive website for a small business",
-      "min_price": 100,
-      "max_price": 300,
-      "buyer_email": "buyer3@example.com"
-    },
-    {
-      "job_title": "Graphic Design",
-      "category": "Graphic Design",
-      "deadline": "2024-05-12",
-      "description": "Design a captivating logo for a brand",
-      "min_price": 50,
-      "max_price": 200,
-      "buyer_email": "buyer1@example.com"
-    },
-    {
-      "job_title": "Digital Marketing",
-      "category": "Digital Marketing",
-      "deadline": "2024-05-10",
-      "description": "Create a social media marketing strategy",
-      "min_price": 150,
-      "max_price": 500,
-      "buyer_email": "buyer2@example.com"
+  {
+    "_id": "66843889f15b18071461fd91",
+    "job_title": "Web Dev",
+    "deadline": "2024-07-12T17:26:58.000Z",
+    "category": "Web Development",
+    "min_price": 100,
+    "max_price": 200,
+    "description": "sohelds241@gmail.com",
+    "email": "sohelds241@gmail.com",
+    "buyer": {
+      "email": "sohelds241@gmail.com",
+      "name": "Mohammad Sohel Dewan",
+      "photo": "https://lh3.googleusercontent.com/a/ACg8ocKXveJz1H09g9WRbthFrF1Twtdh7W4loTjjTy6pUgIPnIoUXEw0=s96-c"
     }
-  ]
-  
+  },
+  {
+    "_id": "66843922f15b18071461fd92",
+    "job_title": "UI/UX",
+    "deadline": "2024-07-14T17:29:39.000Z",
+    "category": "Graphics Design",
+    "min_price": 211,
+    "max_price": 322,
+    "description": "sohelds241@gmail.com",
+    "email": "sohelds241@gmail.com",
+    "buyer": {
+      "email": "sohelds241@gmail.com",
+      "name": "Mohammad Sohel Dewan",
+      "photo": "https://lh3.googleusercontent.com/a/ACg8ocKXveJz1H09g9WRbthFrF1Twtdh7W4loTjjTy6pUgIPnIoUXEw0=s96-c"
+    }
+  },
+  {
+    "_id": "6684394cf15b18071461fd93",
+    "job_title": "DM Manager",
+    "deadline": "2024-07-15T17:30:16.000Z",
+    "category": "Digital Marketing",
+    "min_price": 111,
+    "max_price": 222,
+    "description": "sohelds241@gmail.com",
+    "email": "sohelds241@gmail.com",
+    "buyer": {
+      "email": "sohelds241@gmail.com",
+      "name": "Mohammad Sohel Dewan",
+      "photo": "https://lh3.googleusercontent.com/a/ACg8ocKXveJz1H09g9WRbthFrF1Twtdh7W4loTjjTy6pUgIPnIoUXEw0=s96-c"
+    }
+  },
+  {
+    "_id": { "$oid": "66881b3214cf9d2d4a6999f0" },
+    "job_title": "Website built quick",
+    "deadline": "2024-07-13T16:10:43.000Z",
+    "category": "Web Development",
+    "min_price": "123",
+    "max_price": "221",
+    "description": "posted by roni@mail.com",
+    "email": "roni@mail.com",
+    "buyer": {
+      "email": "roni@mail.com",
+      "name": "Roni",
+      "photo": "https://fastly.picsum.photos/id/416/200/200.jpg?hmac=QgMiXqHqKofoCv4h8lkrwRSOkn5Twkh15Dfl9Efvtwo"
+    }
+  },
+  {
+    "_id": { "$oid": "66881bfb14cf9d2d4a6999f1" },
+    "job_title": "UI/UX for Figma",
+    "deadline": "2024-07-20T16:14:03.000Z",
+    "category": "Graphics Design",
+    "min_price": "200",
+    "max_price": "300",
+    "description": "Posted by roni@mail.com",
+    "email": "roni@mail.com",
+    "buyer": {
+      "email": "roni@mail.com",
+      "name": "Roni",
+      "photo": "https://fastly.picsum.photos/id/416/200/200.jpg?hmac=QgMiXqHqKofoCv4h8lkrwRSOkn5Twkh15Dfl9Efvtwo"
+    }
+  },
+  {
+    "_id": { "$oid": "668821e114cf9d2d4a6999f2" },
+    "job_title": "DM",
+    "deadline": "2024-07-26T16:38:15.414Z",
+    "category": "Web Development",
+    "min_price": "200",
+    "max_price": "250",
+    "description": "posted by jony@mail.com",
+    "email": "jony@mail.com",
+    "buyer": {
+      "email": "jony@mail.com",
+      "name": "jony",
+      "photo": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+    }
+  }
+]

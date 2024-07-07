@@ -11,6 +11,7 @@ import UpdateJob from '../pages/UpdateJob';
 import PrivateRoute from './PrivateRoute';
 import MyBids from '../pages/MyBids';
 import AllJobs from '../pages/AllJobs';
+import BidRequests from '../pages/BidsRequests';
 const router = createBrowserRouter([{
     path: '/',
     element: <Main />,
@@ -55,10 +56,13 @@ const router = createBrowserRouter([{
             element: <PrivateRoute><MyPostedJobs /></PrivateRoute> ,
         },
         {
-            path: '/my-bids/:email',
+            path: '/my-bids',
             element: <PrivateRoute><MyBids /></PrivateRoute> ,
-            loader: ({params})=> 
-            fetch(`${import.meta.env.VITE_API_URL}/my-bids/${params.email}`),
+        },
+        {
+            path: '/bid-requests',
+            element: <PrivateRoute><BidRequests /></PrivateRoute> ,
+           
         }
     ]
 }]);

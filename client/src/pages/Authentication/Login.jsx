@@ -23,7 +23,9 @@ const Login = () => {
       console.log(result.user)
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{
         email: result?.user?.email,
-      })
+      },
+       { withCredentials: true}
+      )
       console.log(data)
       toast.success('Signin Successful')
       navigate(from, { relative: true })
@@ -43,7 +45,12 @@ const Login = () => {
     try {
       //User Login
       const result = await signIn(email, pass)
-      console.log(result)
+      console.log(result.user)
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{
+        email: result?.user?.email,
+      },
+       { withCredentials: true}
+      )
       navigate(from, { relative: true })
       toast.success('Signin Successful')
     } catch (err) {

@@ -14,8 +14,24 @@ const corsOptions = {
     optionSuccessStatus: 200
 }
 app.use(cors(corsOptions));
-
 app.use(express.json());
+app.use(cookieParser());
+
+// verify jwt middleware
+const verityToken = (req, res, next) => {
+  const token = req.cookies?.token;
+  if(!token) return res.status(401).send({ message: 'Unauthorize access or Invalid token'})
+  if(token){
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded)=>{
+      if(err) {
+        return console.log(err)
+      }
+      console.log(decoded, 'email from token')
+      req.user = decoded;
+      next();
+    })
+  }
+}
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.i2cqtwl.mongodb.net/?appName=Cluster0`;
 
@@ -79,8 +95,12 @@ async function run() {
       res.send(result);
     })
     // Get all jobs posted by specific user
-    app.get('/jobs/:email', async (req, res)=>{
+    app.get('/jobs/:email', verityToken, async (req, res)=>{
+      const tokenEmail   = req.user.email
       const email = req.params.email;
+      if(tokenEmail !== email){
+        return res.status(403).send({ message: 'Forbidden' })  // if user trying to access other user's job or token
+      }
       const query = { 'buyer.email': email } 
       //This is how to access nested objects in db, if db buyer email == email then my posted job
       const result = await jobsCollection.find(query).toArray();

@@ -1,84 +1,83 @@
-// import toast from 'react-hot-toast'
-// import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-// import useAxiosSecure from '../hooks/useAxiosSecure'
-// import useAuth from '../hooks/useAuth'
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../provider/AuthProvider";
-import axios from "axios";
-import toast from "react-hot-toast";
+import toast from 'react-hot-toast'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import useAxiosSecure from '../hooks/useAxiosSecure'
+import useAuth from '../hooks/useAuth'
+// import { useContext, useEffect, useState } from "react";
+// import { AuthContext } from "../provider/AuthProvider";
+// import axios from "axios";
 
 const BidRequests = () => {
-    const { user } = useContext(AuthContext);
-  const [bids, setBids] = useState([]);
+//     const { user } = useContext(AuthContext);
+//   const [bids, setBids] = useState([]);
   
-  useEffect(() => {
-    getData()
-  }, [user]);
-
-  const getData = async () => {
-    const { data } = await axios(
-      `${import.meta.env.VITE_API_URL}/bid-requests/${user?.email}`
-    )
-    setBids(data);
-  }
-//   function for handling status in button
-const handleStatus = async (id, prevStatus, status) => {
-if(prevStatus === status) {
-    console.log('Status is already same')
-    return toast.error('Status already in use')
-}else{
-    toast.success('Status updated successfully')
-}
-console.log(id, prevStatus, status)
-const { data } = await axios.patch(`${import.meta.env.VITE_API_URL}/bid/${id}`, {status}) // route is bid/id and only one update for patch
-console.log(data)
-getData() //UI REFRESH/update called to change status in progress
-}
-//   const { user } = useAuth()
-//   const axiosSecure = useAxiosSecure()
-//   const queryClient = useQueryClient()
-//   const { data: bids = [], isLoading } = useQuery({
-//     queryFn: () => getData(),
-//     queryKey: ['bids', user?.email],
-//   })
-//   console.log(bids)
-//   console.log(isLoading)
-//   // const [bids, setBids] = useState([])
-
-//   // useEffect(() => {
-//   //   getData()
-//   // }, [user])
+//   useEffect(() => {
+//     getData()
+//   }, [user]);
 
 //   const getData = async () => {
-//     const { data } = await axiosSecure(`/bid-requests/${user?.email}`)
-//     return data
+//     const { data } = await axios(
+//       `${import.meta.env.VITE_API_URL}/bid-requests/${user?.email}`
+//     )
+//     setBids(data);
 //   }
+// //   function for handling status in button
+// const handleStatus = async (id, prevStatus, status) => {
+// if(prevStatus === status) {
+//     console.log('Status is already same')
+//     return toast.error('Status already in use')
+// }else{
+//     toast.success('Status updated successfully')
+// }
+// console.log(id, prevStatus, status)
+// const { data } = await axios.patch(`${import.meta.env.VITE_API_URL}/bid/${id}`, {status}) // route is bid/id and only one update for patch
+// console.log(data)
+// getData() //UI REFRESH/update called to change status in progress
+// }
+  const { user } = useAuth()
+  const axiosSecure = useAxiosSecure()
+  const queryClient = useQueryClient()
+  const { data: bids = [], isLoading } = useQuery({
+    queryFn: () => getData(),
+    queryKey: ['bids', user?.email],
+  })
+  console.log(bids)
+  console.log(isLoading)
+  // const [bids, setBids] = useState([])
 
-//   const { mutateAsync } = useMutation({
-//     mutationFn: async ({ id, status }) => {
-//       const { data } = await axiosSecure.patch(`/bid/${id}`, { status })
-//       console.log(data)
-//       return data
-//     },
-//     onSuccess: () => {
-//       console.log('Wow, data updated')
-//       toast.success('Updated')
-//       // refresh ui for latest data
-//       // refetch()
+  // useEffect(() => {
+  //   getData()
+  // }, [user])
 
-//       // Kothin
-//       queryClient.invalidateQueries({ queryKey: ['bids'] })
-//     },
-//   })
+  const getData = async () => {
+    const { data } = await axiosSecure(`/bid-requests/${user?.email}`)
+    return data
+  }
 
-//   // handleStatus
-//   const handleStatus = async (id, prevStatus, status) => {
-//     console.log(id, prevStatus, status)
-//     if (prevStatus === status) return console.log('Sry vai.. hobena')
-//     await mutateAsync({ id, status })
-//   }
+  const { mutateAsync } = useMutation({
+    mutationFn: async ({ id, status }) => {
+      const { data } = await axiosSecure.patch(`/bid/${id}`, { status })
+      console.log(data)
+      return data
+    },
+    onSuccess: () => {
+      console.log('Wow, data updated')
+      toast.success('Updated')
+      // refresh ui for latest data
+      // refetch()
 
-//   if (isLoading) return <p>Data is still loading......</p>
+      // Kothin
+      queryClient.invalidateQueries({ queryKey: ['bids'] })
+    },
+  })
+
+  // handleStatus
+  const handleStatus = async (id, prevStatus, status) => {
+    console.log(id, prevStatus, status)
+    if (prevStatus === status) return console.log('Sry vai.. hobena')
+    await mutateAsync({ id, status })
+  }
+
+  if (isLoading) return <p>Data is still loading......</p>
 
   return (
     <section className='container px-4 mx-auto pt-12'>
@@ -93,8 +92,8 @@ getData() //UI REFRESH/update called to change status in progress
       <div className='flex flex-col mt-6'>
         <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
           <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
-            <div className='overflow-hidden border border-gray-200  md:rounded-lg'>
-              <table className='min-w-full divide-y divide-gray-200'>
+            <div className='overflow-hidden border border-gray-200  md:rounded-lg mb-8'>
+              <table className='min-w-full divide-y divide-gray-200  min-h-96 '>
                 <thead className='bg-gray-50'>
                   <tr>
                     <th

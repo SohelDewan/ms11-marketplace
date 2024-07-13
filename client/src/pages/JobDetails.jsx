@@ -3,9 +3,11 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+
 const JobDetails = () => {
+  const axiosSecure = useAxiosSecure()
   const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
@@ -52,15 +54,13 @@ const JobDetails = () => {
     };
 
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/bid`,
-        bidData
-      );
-      // console.log(data)
+      const { data } = await axiosSecure.post(`/bid`, bidData);
+      console.log(data)
       toast.success("Bid placed successfully");
       navigate("/my-bids");
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data)
+      e.target.reset(); // this line for reset bid request while clicking btn
     }
   };
 
@@ -120,6 +120,7 @@ const JobDetails = () => {
                 id="price"
                 type="text"
                 name="price"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
               />
             </div>

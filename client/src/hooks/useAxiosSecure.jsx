@@ -11,7 +11,6 @@ const useAxiosSecure = () => {
   const { logOut } = useAuth();
   const navigate = useNavigate();
   // interceptor
-
   //   Response Interceptor
   axiosSecure.interceptors.response.use(
     (res) => {
@@ -23,13 +22,11 @@ const useAxiosSecure = () => {
         await logOut();
         navigate("/login");
       }
-      return Promise.reject(error);
+      return Promise.reject(error); // for catching errors Promise.reject is called
     }
   );
-
   //   Request Interceptor
   //   axios.interceptors.request
-
   return axiosSecure;
 };
 

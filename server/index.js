@@ -85,6 +85,18 @@ async function run() {
     // Save a bid data in mongodb
     app.post('/bid', async (req, res)=>{
       const bidData = req.body;
+      // check if we already have the same bid for the job
+      const query = {
+        email: bidData.email,
+        jobId: bidData.jobId,
+      }
+      const alreadyApplied = await bidsCollection.findOne(query)
+      // console.log(alreadyApplied)
+      if(alreadyApplied){
+        return res
+        .status(400)
+        .send( 'Already applied for this job' )
+      }
       const result = await bidsCollection.insertOne(bidData);
       res.send(result);
     })
@@ -153,6 +165,28 @@ async function run() {
       const result = await bidsCollection.updateOne(query, updateDoc)
       res.send(result)
     })
+        // Get all the jobs from mongodb
+        app.get('/all-jobs', async (req, res) => {
+          const size = parseInt(req.query.size)
+          const page = parseInt(req.query.page) - 1
+          const filter = req.query.filter
+          const sort = req.query.sort
+          // console.log( size, page)
+          let query = {}
+          if(filter) query = { category:filter}
+          let options = {}
+          if(sort) options = {sort: {deadline : sort === 'asc' ?  1: -1}}
+          const result = await jobsCollection.find(query, options).skip(page * size).limit(size).toArray();
+          res.send(result);
+      })
+          // Get all the jobs from mongodb
+    app.get('/jobs-count', async (req, res) => {
+      const filter = req.query.filter
+      let query = {}
+      if(filter) query = { category:filter}
+      const count = await jobsCollection.countDocuments(query);
+      res.send({count});
+  })
     // Connect the client to the server	(optional starting in v4.7)
     // await client.connect();
     // Send a ping to confirm a successful connection

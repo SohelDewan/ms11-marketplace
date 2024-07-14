@@ -4,10 +4,10 @@
 # npm i jsonwebtoken cookie-parser
 # soloSphere(marketplace for freelancers)
 
-- [Live Link(Firebase)](https://solosphere.web.app/)
+- [Live Link(Firebase)](https://solosphere-6d3e0.web.app)
 
-- [Github Repo - (1st Part)](https://github.com/shakilahmedatik/soloSphere-session)
-- [Github Repo - (Complete - 2nd Part)](https://github.com/shakilahmedatik/soloSphere-complete)
+<!-- - [Github Repo - (1st Part)](https://github.com/shakilahmedatik/soloSphere-session)
+- [Github Repo - (Complete - 2nd Part)](https://github.com/shakilahmedatik/soloSphere-complete) -->
 
   Resources:
 

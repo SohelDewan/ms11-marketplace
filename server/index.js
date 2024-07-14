@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 const corsOptions = {
-    origin: ['http://localhost:5173', 'http://localhost:5174' ],
+    origin: ['http://localhost:5173', 'http://localhost:5174', 'https://solosphere-6d3e0.web.app' ],
     credentials: true,
     optionSuccessStatus: 200
 }

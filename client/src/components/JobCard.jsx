@@ -16,13 +16,13 @@ const   JobCard = ({ job }) => {
   return (
     <Link
       to={`/job/${_id}`}
-      className='w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all'
+      className='w-full mb-6 max-w-sm px-6 py-8 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all'
     >
       <div className='flex items-center justify-between p-4'>
         <span className='text-xs font-light text-gray-800 '>
           Deadline: {new Date(deadline).toLocaleDateString()}
         </span>
-        <span className='px-3 py-1 text-[8px] text-blue-800 uppercase bg-blue-200 rounded-full '>
+        <span className='px-3 py-3 text-[10px] text-blue-800 uppercase bg-blue-200 rounded-full '>
           {category}
         </span>
       </div>

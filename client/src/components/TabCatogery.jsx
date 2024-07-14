@@ -32,7 +32,7 @@ export default function TabCategories() {
           </TabList>
           </div>
           <TabPanel>
-            <div className="mt-6 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap:6">
+            <div className="mt-6 md:mt-16 grid lg:pl-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap:6 ">
             {jobs.filter(j=> j.category === 'Web Development').map(job => (
               <JobCard job={job} key={job._id} />
             ))}

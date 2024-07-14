@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,10 +7,10 @@ import toast from "react-hot-toast";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const JobDetails = () => {
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
-  const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
+  const [startDate, setStartDate] = useState(new Date());
   const job = useLoaderData();
   const {
     _id,
@@ -24,20 +24,19 @@ const JobDetails = () => {
     buyer,
   } = job || {};
   // console.log(job)
-  const handleFormSubmission = async (e) => {
-    e.preventDefault();
+  const handleFormSubmission = async e => {
+    e.preventDefault()
     if (user?.email === buyer?.email) {
       return toast.error("Action not permitted!");
     }
     const form = e.target;
     const jobId = _id;
     const price = parseFloat(form.price.value);
-    if (price < parseFloat(min_price))
+    if (price < parseFloat(min_price) || price > parseFloat(max_price))
       return toast.error("Offer more or at least equal to Minimum Price.");
     const comment = form.comment.value;
-    const deadline = startDate;
-    const email = user?.email;
-    const buyer_email = buyer_email;
+    const deadline = startDate
+    const email = user?.email
     const status = "Pending";
 
     const bidData = {
@@ -55,9 +54,9 @@ const JobDetails = () => {
 
     try {
       const { data } = await axiosSecure.post(`/bid`, bidData);
-      console.log(data)
+      console.log(data);
       toast.success("Bid placed successfully");
-      navigate("/my-bids");
+      navigate('/my-bids/:email');
     } catch (err) {
       toast.error(err.response.data)
       e.target.reset(); // this line for reset bid request while clicking btn
@@ -156,20 +155,19 @@ const JobDetails = () => {
               <DatePicker
                 className="border p-2 rounded-md"
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={date => setStartDate(date)}
               />
             </div>
           </div>
 
           <div className="flex justify-end mt-6">
-            <Link to="/">
+            
               <button
                 type="submit"
                 className="px-8 py-3 mt-3 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
               >
                 Place Bid
               </button>
-            </Link>
           </div>
         </form>
       </section>
